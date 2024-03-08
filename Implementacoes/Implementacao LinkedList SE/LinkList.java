@@ -60,14 +60,42 @@ public class LinkList<T> implements LLInterface<T> {
 
     @Override
     public boolean addAfter(T dado, T crit) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addAfter'");
+
+        Node p = searchNode(crit);
+        if (p == null) {
+            System.out.println("Esse elemento nao esta na linked list.");
+            return false;
+        } else {
+            Node novo = new Node(dado);
+
+            if (p.next == null) {
+                addLast(dado);
+            }
+
+            novo.next = p.next;
+            p.next = novo;
+            size++;
+            return true;
+        }
+
+
+
+
+
     }
 
     @Override
     public boolean addPos(T dado, int pos) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addPos'");
+        Node p = new Node(dado);
+        Node pivo = head;
+
+        for (int i = 0; i < pos; i++) {
+            pivo = pivo.next;
+        }
+        p.next = pivo.next;
+        pivo.next = p;
+        size++;
+        return true;
     }
 
     @Override
@@ -126,9 +154,19 @@ public class LinkList<T> implements LLInterface<T> {
     }
 
     @Override
-    public T getPos(int pos) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPos'");
+    public T getPos(int pos)  {
+        Node p = head;
+
+        if (pos > size) {
+            System.out.println("Posicao maior que o tamanho da lista");
+            System.out.println("exception aqui (linha 162 +-)");
+            return null;
+        }
+
+        for (int i = 0; i < pos; i++) {
+            p = p.next;
+        }
+        return p.data;
     }
 
     @Override
