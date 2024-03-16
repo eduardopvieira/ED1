@@ -1,0 +1,5 @@
+bom: 1
+boa: 2
+tarde: 1
+noite: 1
+dia: 1

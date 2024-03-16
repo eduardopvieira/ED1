@@ -1,11 +1,12 @@
-public class FilaCircular<T> {
+public class Fila<T> {
 
     private int size;
     private T[] array;
     private int first;
     private int last;
 
-    public FilaCircular(int size){
+    @SuppressWarnings("unchecked")
+    public Fila(int size){
         this.size = size;
         this.array = (T[]) new Object[size];
         this.first = -1;
