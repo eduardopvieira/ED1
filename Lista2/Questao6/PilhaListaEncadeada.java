@@ -6,18 +6,15 @@ import Questao3.ListaSimples;
 public class PilhaListaEncadeada<T> {
     
     private int topo;
-    private int size;
     private ListaSimples<T> ls; 
 
     public PilhaListaEncadeada() {
         topo = -1;
-        size = 0;
         ls = new ListaSimples<>();
     }
 
     public void push (T data) {
         ls.addLast(data);
-        size++;
         topo++;
     }
 
@@ -25,7 +22,6 @@ public class PilhaListaEncadeada<T> {
         if (isEmpty()) {
             throw new MyException("A pilha está vazia.");
         }
-        size--;
         topo--;
         return ls.removeLast();
     }
