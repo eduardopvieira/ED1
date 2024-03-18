@@ -1,3 +1,7 @@
+package Questao1;
+
+import Exception.MyException;
+
 public class Pilha<T> {
 
     private int size;

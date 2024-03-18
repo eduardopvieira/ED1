@@ -1,3 +1,7 @@
+package Questao2;
+
+import Exception.MyException;
+
 public class Fila<T> {
 
     private int size;

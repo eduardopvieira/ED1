@@ -11,10 +11,11 @@ import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+import Exception.MyException;
 import Questao3.ListaSimples;
 
 public class Contador {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MyException {
         ListaSimples<String> listaPalavras = new ListaSimples<>();
         Map<String, Integer> contador = new HashMap<>();
 

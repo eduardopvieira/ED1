@@ -1,5 +1,7 @@
 package Questao3;
 
+import Exception.MyException;
+
 public class ListaSimples<T> {
 
     class Node {
@@ -80,38 +82,44 @@ public class ListaSimples<T> {
         return tail.data;
     }
     
-    public T search(T crit) {
+    public T search(T crit) throws MyException{
         Node p = head;
-        while (p.data != crit) {
+
+        while (p != null) {
             if (p.data.equals(crit)) {
-                System.out.println("Valor nao encontrado.");
-                return null;
+                return p.data;
             }
-            p = p.next;
         }
-        System.out.println("Valor encontrado.");
-        return p.data;
+        throw new MyException("Elemento nao encontrado.");
     }
     
-    public T removeFirst() 
+    public T removeFirst() throws MyException
     {
+        if (isEmpty()) 
+        {
+            throw new MyException("A lista já está vazia.");
+        }
+
         Node removing = head;
         head = removing.next;
         removing.next = null;
+        size--;
         return removing.data; 
     };
 
-    public T removeLast() {
+    public T removeLast() throws MyException
+    {
         
         if (isEmpty()) {
-            System.out.println("Lista vazia!");
-            return null;
+            throw new MyException("A lista já está vazia.");
         }
         
         Node p = head;
-        while (p.next != tail) {
+        while (p.next != tail) 
+        {
             p = p.next;
         }
+        
         p.next = null;
         T retorno = tail.data;
         tail = p;
@@ -121,32 +129,42 @@ public class ListaSimples<T> {
     };
 
 
-    public T remove(T crit) {
+    public T remove(T crit) throws MyException {
+        
+        if (isEmpty()) { //se ta vazio
+            throw new MyException("Lista está vazia.");
+        }
+
+        if (search(crit) == null) { //se n achou
+            throw new MyException("Valor não encontrado.");
+        }
+    
+        if (head.data.equals(crit)) // se for o primeiro
+        { 
+            return removeFirst();
+        }
+        
         Node p = head;
         Node prev = null;
-    
-        if (search(crit) == null) {
-            System.out.println("Nao existe esse valor");
-            return null;
-        }
-    
-        if (head.data.equals(crit)) { // se for o primeiro
-            return removeFirst();
-        } else {            
-            while (p != null && !p.data.equals(crit)) {
-                prev = p;
-                p = p.next;
+        
+        while (p != null) {
+            if (p.data.equals(crit)) {
+                if (p == tail) // se for o último
+                { 
+                    return removeLast();
+                } 
+                else // se estiver no meio
+                { 
+                    prev.next = p.next;
+                    p.next = null;
+                    size--;
+                    return p.data;
+                }
             }
-            if (p == null) { // se o valor não foi encontrado
-                System.out.println("Valor nao encontrado na lista");
-                return null;
-            } else if (p == tail) { // se for o último
-                return removeLast();
-            } else { // se estiver no meio
-                prev.next = p.next;
-                return p.data;
-            }
+            prev = p;
+            p = p.next;
         }
+        throw new MyException("Valor nao encontrado.");
     }
 
 
