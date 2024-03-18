@@ -15,7 +15,7 @@ public class ExpPosFixa {
         String entrada = sc.nextLine();
         String[] arrayValores = entrada.split("\\s+");
         operacoes(pilha, arrayValores);
-        
+        sc.close();
     }
 
     public static void operacoes(Pilha<Integer> pilha, String[] arrayValores) throws NumberFormatException, MyException {
