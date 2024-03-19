@@ -21,7 +21,7 @@ public class PilhaListaEncadeada<T> {
     public T pop() throws MyException {
         if (isEmpty()) {
             throw new MyException("A pilha está vazia.");
-        }
+        }        
         topo--;
         return ls.removeLast();
     }
@@ -38,6 +38,10 @@ public class PilhaListaEncadeada<T> {
     
     public boolean isFull() {
         return false;
+    }
+
+    public void show() {
+        ls.show();
     }
 
 }

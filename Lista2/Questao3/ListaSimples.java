@@ -113,8 +113,17 @@ public class ListaSimples<T> {
         if (isEmpty()) {
             throw new MyException("A lista já está vazia.");
         }
-        
+
         Node p = head;
+
+        if (head == tail) {
+            head = null;
+            tail = null;
+            size--;
+            return p.data;
+        }
+        
+        
         while (p.next != tail) 
         {
             p = p.next;
@@ -166,8 +175,6 @@ public class ListaSimples<T> {
         }
         throw new MyException("Valor nao encontrado.");
     }
-
-
     
     public boolean isEmpty(){
         if (head == null) {
@@ -176,5 +183,12 @@ public class ListaSimples<T> {
         return false;
     }
 
+    public void show() {
+        Node p = head;
+        while (p != null) {
+            System.out.println(p.data);
+            p = p.next;
+        }
+    }
 
 }
