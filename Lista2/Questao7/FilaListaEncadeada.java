@@ -15,7 +15,7 @@ public class FilaListaEncadeada<T> {
         fila = new ListaSimples<>();
     }
 
-    void add (T valor) throws MyException {
+    public void add (T valor) throws MyException {
         if (isFull()) {
             throw new MyException("Fila cheia");
         }
@@ -53,6 +53,10 @@ public class FilaListaEncadeada<T> {
             return true;
         }
         return false;
+    }
+
+    public void show() {
+        fila.show();
     }
 
 }
