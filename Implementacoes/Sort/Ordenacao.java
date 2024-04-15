@@ -1,3 +1,4 @@
+
 import java.util.Arrays;
 
 public class Ordenacao {
@@ -11,8 +12,9 @@ public class Ordenacao {
         //SelectSort(vetor);
         //QuickSort(vetor, 0, vetor.length-1);
         //ShellSort(vetor);
-        //InsertSort(vetor);
+        InsertSort(vetor);
     }
+
 
 
     public static void BubbleSort(int[] vetor) {
@@ -58,16 +60,6 @@ public class Ordenacao {
             System.out.println("Iteração " + (i + 1) + ": " + Arrays.toString(vetor));
         }
     }
-
-    public static void ShellSort(int[] vetor) {
-        System.out.println("=============== SHELL SORT: ===============");
-        int h = 1;
-        int tamanho = vetor.length;
-        int valor, j;
-        int contador = 0;
-        while (h < tamanho) {
-            h = h * 3 + 1;
-        }
 
     public static void ShellSort(int[] vetor) {
         int h = 1;
@@ -117,31 +109,11 @@ public class Ordenacao {
                 contador++;
                 System.out.println("Iteração " + contador + ": " + Arrays.toString(vetor));
             }
-
         }
         if (inicio < r) { QuickSort(vetor, inicio, r);}
         if (l < fim) { QuickSort(vetor, l, fim); }
     }
-
-
-
-    public static void SelectSortTeste(int[] vetor) {
-        for (int i = 0; i < vetor.length; i++) {
-            int menor = i; //indice do menor = numero da iteracao, valor inicial pra nao percorrer td
-
-            for (int j = i+1; j < vetor.length; j++) { //j vai percorrendo na frente, pra nao ter que percorrer do 0 toda vez
-                if (vetor[j] < vetor[menor]) { //se o j encontrar algum valor menor que o do indice do menor
-                    menor = j; //o indice do menor passa a ser J
-                }
-            }
-
-            if (menor != i) { //se menor for qualquer outro numero que nao o menor inicial "I"
-                int temp = vetor[i]; //faz o swap
-                vetor[i] = vetor[menor];
-                vetor[menor] = temp;
-            }
-        }
-    }
 }
+
 
 
